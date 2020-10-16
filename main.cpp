@@ -5,6 +5,16 @@
 
 using namespace std;
 
+string animals[5] = {"pigs", "dogs", "cows", "ducks", "geese"};
+
+string choice;
+
+bool isInAnimals = false;
+
+string cont;
+
+int animalsLength = *(&animals + 1) - animals;
+
 class animals {
 public:
     void animalSounds(string animal, string sound);
@@ -44,15 +54,14 @@ public:
     const string sound = "'HONK'";
 };
 
-string animals[5] = {"pigs", "dogs", "cows", "ducks", "geese"};
-string choice;
-bool isInAnimals = false;
-string cont;
-int animalsLength = *(&animals + 1) - animals;
 pigs pig;
+
 dogs dog;
+
 cows cow;
+
 ducks duck;
+
 geese goose;
 
 void listAnimals() {
@@ -78,17 +87,15 @@ void isNotInAnimals() {
 }
 
 void checkIfIsInAnimals() {
-    for (int i = 0; i < animalsLength; i++) {
-        while(isInAnimals == false) {
-            for (int i = 0; i < animalsLength; i++) {
-                if(animals[i] == choice) {
-                    isInAnimals = true;
-                    break;
-                }
+    while(isInAnimals == false) {
+        for (int i = 0; i < animalsLength; i++) {
+            if(animals[i] == choice) {
+                isInAnimals = true;
+                break;
             }
-            if(isInAnimals == false) {
-                isNotInAnimals();
-            }
+        }
+        if(isInAnimals == false) {
+            isNotInAnimals();
         }
     }
 }
@@ -96,14 +103,20 @@ void checkIfIsInAnimals() {
 void result() {
     if(choice == "pigs") {
         pig.animalSounds(pig.animal, pig.sound);
+        isInAnimals = false;
     } else if(choice == "dogs") {
         dog.animalSounds(dog.animal, dog.sound);
+        isInAnimals = false;
     } else if(choice == "cows") {
         cow.animalSounds(cow.animal, cow.sound);
+        isInAnimals = false;
     } else if(choice == "ducks") {
         duck.animalSounds(duck.animal, duck.sound);
+        isInAnimals = false;
     } else if(choice == "geese") {
         goose.animalSounds(goose.animal, goose.sound);
+        cout << "*The goose steals your computer and drags it into the lake*";
+        isInAnimals = false;
     }
 }
 
@@ -131,4 +144,4 @@ int main()
     } while(cont == "yes");
 
     return 0;
-    }
+}
